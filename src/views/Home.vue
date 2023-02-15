@@ -7,12 +7,10 @@
 <script>
 import Header from "@/components/Header.vue";
 import SelectWeek from "@/components/SelectWeek.vue";
-import {VmContainer} from "vue3-material";
 // @ is an alias to /src
 export default {
   name: "Home",
   components: {
-    VmContainer,
     SelectWeek,
     Header
   },
