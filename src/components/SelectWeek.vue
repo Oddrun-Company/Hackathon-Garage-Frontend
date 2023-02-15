@@ -40,7 +40,6 @@ export default {
 
 .topnav div span:hover {
   border-bottom: 3px solid #205DB9;
-  border-radius: 100px 100px 0px 0px;
   height: 100%;
   display: flex;
   justify-content: center;
