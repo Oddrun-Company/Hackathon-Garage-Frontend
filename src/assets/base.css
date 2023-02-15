@@ -104,3 +104,14 @@ body {
 }
 
 
+
+.reserve_button {
+  background-color: var(--parking-main-blue);
+  color: #ffffff;
+  border-radius: 20px;
+  border: none;
+  height: 42px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 15px;
+}
