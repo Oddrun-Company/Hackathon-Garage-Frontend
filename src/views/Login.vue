@@ -23,6 +23,7 @@
 <script>
 
 import LoginInput from "@/components/LoginInput.vue";
+import axios from "axios";
 
 export default {
   name: "Login",
@@ -32,6 +33,7 @@ export default {
   data() {
     return {
       phone: "",
+      response: ""
     };
   },
   computed: {
@@ -40,12 +42,20 @@ export default {
     },
   },
   methods: {
-    login() {
+    async login() {
       const body = {
         'phone' : this.phone
       };
-      alert(body);
 
+      try {
+        const response = await axios.post(
+            axios.options.root + "/auth/request"
+        , body);
+        this.response = response.data;
+        console.log(this.response);
+      } catch (error) {
+        console.log(error);
+      }
     },
   },
 };
