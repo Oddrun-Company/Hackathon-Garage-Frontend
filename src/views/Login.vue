@@ -10,15 +10,38 @@
     >
     </LoginInput>
     <button @click="login" :disabled="!checkDisabled">Log in</button>
+    <ReserveBox
+        day="شنبه"
+        date="1401/11/26"
+        price="50"
+        status="reserved"
+    >
+    </ReserveBox>
+    <ReserveBox
+        day="شنبه"
+        date="1401/11/26"
+        price="50"
+        status="free"
+    >
+    </ReserveBox>
+    <ReserveBox
+        day="شنبه"
+        date="1401/11/26"
+        price="50"
+        status="filled"
+    >
+    </ReserveBox>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import LoginInput from "@/components/LoginInput.vue";
+import ReserveBox from "@/components/ReserveBox.vue";
 export default {
   name: "Login",
   components: {
+    ReserveBox,
     LoginInput,
   },
   data() {
