@@ -2,7 +2,9 @@
   <div class="header__container">
     <div class="info">
       <span class="name">{{ name }}</span>
-      <span class="debt">بدهی: {{ debt }}</span>
+      <div class="debt">
+        <span style="padding-left: 5px">بدهی</span><div class="debt-value">{{ debt }}</div>
+      </div>
     </div>
     <div class="buttons">
       <RulesButton/>
@@ -29,6 +31,7 @@ export default {
     }
   },
   methods: {},
+
 };
 
 </script>
@@ -61,8 +64,6 @@ export default {
 }
 
 .name {
-  /* M3/Title/Medium */
-  font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
@@ -75,15 +76,19 @@ export default {
 }
 
 .debt {
-  font-family: 'IRANSans';
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
   line-height: 20px;
   /* identical to box height */
-
+  display: flex;
   text-align: right;
 
   color: rgba(0, 0, 0, 0.5);
+}
+
+.debt-value {
+  direction: ltr;
+  color: var(--parking-dark-red);
 }
 </style>

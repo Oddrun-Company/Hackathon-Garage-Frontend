@@ -1,7 +1,7 @@
 <template>
-  <router-view />
+  <router-view/>
 </template>
 
 <style lang="css">
-  /*@import "./assets/main.css";*/
+@import "./assets/main.css";
 </style>
