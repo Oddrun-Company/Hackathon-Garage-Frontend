@@ -14,9 +14,23 @@ const routes = [
     },
 ];
 
-const router = createRouter({
+var router = createRouter({
     history: createWebHashHistory(),
     routes,
 });
+
+router.beforeEach(async (to, from) => {
+    // return { name: 'Login' }
+    if (
+
+        // make sure the user is authenticated
+        localStorage.getItem('token') === null &&
+        // ❗️ Avoid an infinite redirect
+        to.name !== 'login'
+    ) {
+        // redirect the user to the login page
+        return { name: 'login'}
+    }
+})
 
 export default router;

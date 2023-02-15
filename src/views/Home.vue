@@ -160,6 +160,20 @@ export default {
         },
         onClick: function(){} // Callback after click
       }).showToast();
+
+      try {
+        axios.get(axios.options.root + "/info", {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+          }
+        }).then(x => {
+          this.user = x.data.user;
+          this.current = x.data.current;
+          this.next = x.data.next;
+        });
+      } catch (error) {
+        console.log(error);
+      }
     }
   },
 };

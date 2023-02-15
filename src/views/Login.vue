@@ -12,6 +12,7 @@
               type="tel"
               label="phone_number"
               v-model="code"
+              placeholder="کد تاییدت را وارد کن مهندس"
           >
           </LoginInput>
         <button @click="verify" :class="{ 'login-button': checkDisabled , 'login-button-disable': !checkDisabled}" :disabled="!checkDisabled">
@@ -27,6 +28,7 @@
               type="tel"
               label="phone_number"
               v-model="phone"
+
           >
           </LoginInput>
         <button @click="login" :class="{ 'login-button': checkDisabled , 'login-button-disable': !checkDisabled}" :disabled="!checkDisabled">

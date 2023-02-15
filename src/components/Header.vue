@@ -3,7 +3,7 @@
     <div class="info">
       <span class="name">{{ user.name }}</span>
       <div class="debt">
-        <span style="padding-left: 5px">بدهی</span><div class="debt-value">{{ user.debt }}</div>
+        <span style="padding-left: 5px; direction: rtl;">بدهی</span><div class="debt-value" style="direction: rtl;">   {{ formattedPrice }}  تومن</div>
       </div>
     </div>
     <div class="buttons">
@@ -22,6 +22,13 @@ export default {
   components: {LogoutButton, RulesButton},
   emits : ['onLogoutClick','onTermClick'],
   props: ['user'],
+  computed:{
+    formattedPrice(){
+      const p = this.user.debt /-10
+
+      return p.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    }
+  },
   methods: {
     logoutClick: function() {
       this.$emit('onLogoutClick');

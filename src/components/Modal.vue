@@ -3,8 +3,8 @@
     <div class="modal-wrapper">
       <div class="modal-container">
         <div style="display: flex; flex-direction: row; justify-content: space-between;">
-          <div class="modal-header"><h4>{{ data.day }}( {{ data.dateString }} )</h4></div>
-          <div class="modal-header"><h4>{{ data.price }} تومان</h4></div>
+          <div class="modal-header"><h4>{{ data.day }}</h4></div>
+          <div class="modal-header"><h4>{{ data.price / 10000 }} تومن</h4></div>
         </div>
         <div class="modal-body">{{ data.title }}</div>
         <div class="modal-footer">
@@ -19,6 +19,7 @@
 
 <script>
 import axios from "axios";
+import router from "../router";
 
 export default {
   name: "Modal",
@@ -44,6 +45,7 @@ export default {
         }).then(x => {
           console.log(x.data)
           this.$emit('reservedClick',x.data.message);
+
         });
       } catch (error) {
         console.log(error);

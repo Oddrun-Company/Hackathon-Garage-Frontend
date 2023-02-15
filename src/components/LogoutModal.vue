@@ -6,7 +6,7 @@
           <div class="modal-header"><h4>خداوکیلی نرو</h4></div>
         </div>
         <div class="modal-footer">
-          <button class="ok_button"> می رم</button>
+          <button class="ok_button" @click="logout"> می رم</button>
           &nbsp;&nbsp;
           <button class="cancel_button" @click="close">می مونم</button>
         </div>
@@ -16,6 +16,9 @@
 </template>
 
 <script>
+import axios from "axios";
+import router from "../router";
+
 export default {
   name: "Modal",
   props: ["data"],
@@ -26,6 +29,27 @@ export default {
   methods: {
     close: function () {
       this.$emit('close');
+    },
+    logout: function () {
+      try {
+        axios.post(axios.options.root + "/auth/logout", {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+          }
+        }).then(x => {
+          localStorage.removeItem('token');
+          this.$emit('close')
+        }).catch(error => {
+          console.log("yyy")
+          localStorage.removeItem('token');
+          router.push("/")
+          this.$emit('close')
+        });
+      } catch (error) {
+        console.log("xxx")
+        localStorage.removeItem('token');
+        this.$emit('close')
+      }
     }
   }
 };

@@ -12,6 +12,8 @@
     "@vue/compat": "^3.2.47",
     "axios": "^1.3.3",
     "bootstrap": "^5.2.3",
+    "dotenv": "^16.0.3",
+    "shamsi": "^1.1.6",
     "toastify-js": "^1.12.0",
     "vue": "^3.2.47",
     "vue-jalali-moment": "^1.0.0",
@@ -19,6 +21,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.0.0",
+    "persian-date": "^0.3.1-b",
     "vite": "^4.0.0"
   }
 }
