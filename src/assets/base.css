@@ -39,13 +39,15 @@
   --parking-background-green: #70C861;
   --parking-border-green: #A8F19C;
   --parking-light-green: rgba(168, 241, 156, 0.5);
+
+  --parking-background: rgba(254, 251, 255, 1);
 }
 
 /* semantic color variables for this project */
 :root {
-  --color-background: var(--vt-c-white);
-  --color-background-soft: var(--vt-c-white-soft);
-  --color-background-mute: var(--vt-c-white-mute);
+  --color-background: var(--parking-background);
+  --color-background-soft: var(--parking-background);
+  --color-background-mute: var(--parking-background);
 
   --color-border: var(--vt-c-divider-light-2);
   --color-border-hover: var(--vt-c-divider-light-1);
@@ -86,10 +88,19 @@ body {
 .main_title {
   color: var(--parking-main-blue);
   font-style: normal;
-  font-weight: 700;
-  font-size: 24px;
-  line-height: 29px;
+  font-weight: 400;
+  font-size: 45px;
+  line-height: 52px;
+  margin-bottom:15px;
   text-align: center;
+}
+
+.main_description {
+  color: var(--parking-main-gray);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
 }
 
 
