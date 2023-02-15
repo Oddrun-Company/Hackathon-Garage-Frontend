@@ -5,37 +5,17 @@
       <h3 class="main_description"> سیستم رزرواسیون مزایده ای</h3>
     </div>
 
-
-      <template v-if="sendSmsFlag">
-        <div class="login_container-input">
-          <LoginInput
-              type="tel"
-              label="phone_number"
-              v-model="code"
-          >
-          </LoginInput>
-        <button @click="verify" :class="{ 'login-button': checkDisabled , 'login-button-disable': !checkDisabled}" :disabled="!checkDisabled">
-          <span class="login-button-text">ورود</span>
-        </button>
-
-        </div>
-      </template>
-
-      <template v-if="!sendSmsFlag">
-        <div class="login_container-input">
-          <LoginInput
-              type="tel"
-              label="phone_number"
-              v-model="phone"
-          >
-          </LoginInput>
-        <button @click="login" :class="{ 'login-button': checkDisabled , 'login-button-disable': !checkDisabled}" :disabled="!checkDisabled">
-          <span class="login-button-text">دریافت کد</span>
-        </button>
-        </div>
-      </template>
-
-
+    <div class="login_container-input">
+      <LoginInput
+          type="tel"
+          label="phone_number"
+          v-model="code"
+      >
+      </LoginInput>
+      <button @click="login" :class="{ 'login-button': checkDisabled , 'login-button-disable': !checkDisabled}" :disabled="!checkDisabled">
+        <span class="login-button-text">ورود</span>
+      </button>
+    </div>
   </div>
   <img class="image" src="../images/login.png" alt="Login image"/>
 </template>
@@ -53,9 +33,7 @@ export default {
   data() {
     return {
       phone: "",
-      response: "",
-      code: "",
-      sendSmsFlag: false,
+      response: ""
     };
   },
   computed: {
@@ -64,24 +42,6 @@ export default {
     },
   },
   methods: {
-    async verify() {
-      const body = {
-        'code' : this.token,
-        'phone': this.phone,
-      }
-      try{
-        const response = await  axios.post(
-            axios.options.root + "/auth/verify",
-            body
-        )
-        localStorage.setItem('token', response.data.data.token)
-        console.log(response.data.data.token)
-        location.href = '/#/home'
-      }catch (e) {
-        console.log(error);
-      }
-
-    },
     async login() {
       const body = {
         'phone' : this.phone
@@ -90,10 +50,9 @@ export default {
       try {
         const response = await axios.post(
             axios.options.root + "/auth/request"
-        , body);
+            , body);
         this.response = response.data;
         console.log(this.response);
-        this.sendSmsFlag = true
       } catch (error) {
         console.log(error);
       }

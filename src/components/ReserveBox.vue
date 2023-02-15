@@ -13,17 +13,17 @@
         {{ price }} تومان
       </div>
       <div>
-        <template v-if="status==='reserved'">
+        <template v-if="status===5">
           <div class="reserved">
             رزور کردی
           </div>
         </template>
-        <template v-if="status==='free'">
+        <template v-if="status===2 || status ===3 ">
           <button @click="reserveClick(price, day, dateString, date)" class="ok_button">
             رزرو کن
           </button>
         </template>
-        <template v-if="status==='filled'">
+        <template v-if="status===3">
           <div class="filled">
             پر شده
           </div>
@@ -45,7 +45,7 @@ export default {
   },
   emits: ['onReserveClick'],
   data() {
-    const tokens = this.date.split('/');
+    const tokens = this.date.split('-');
     const months = [
       {id: '01', text: 'فروردین'},
       {id: '02', text: 'اردیبهشت'},
@@ -60,9 +60,17 @@ export default {
       {id: '11', text: 'بهمن'},
       {id: '12', text: 'اسفند'}
     ];
+    const datStatus = {
+      '0': 'HOLIDAY',
+      '1': 'PASSED',
+      '2': 'AVAILABLE',
+      '3': 'RESERVED_BUT_BIDABLE',
+      '4': 'RESERVED_NOT_BIDABLE',
+      '5': 'RESERVED_BY_ME'
+    }
 
     return {
-      dateString: tokens[2] + ' ' + months.find(x => x.id === tokens[1]).text
+      dateString: tokens[2] + ' ' + months.find(x => x.id === tokens[1]).text,
     }
   },
 };

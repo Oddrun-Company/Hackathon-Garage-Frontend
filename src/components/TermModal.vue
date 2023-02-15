@@ -3,14 +3,11 @@
     <div class="modal-wrapper">
       <div class="modal-container">
         <div style="display: flex; flex-direction: row; justify-content: space-between;">
-          <div class="modal-header"><h4>{{ data.day }}( {{ data.dateString }} )</h4></div>
-          <div class="modal-header"><h4>{{ data.price }} تومان</h4></div>
+          <div class="modal-header"><h4> kdjflksdlfj ldksjfsdjl <br> jsdflkjfjsdlfjk <br> sldkjflksdjlkfjlsdkjf <br></h4></div>
         </div>
-        <div class="modal-body">{{ data.title }}</div>
         <div class="modal-footer">
-          <button class="ok_button" @click="reserve"> رزرو</button>
           &nbsp;&nbsp;
-          <button class="cancel_button" @click="close"> نچ</button>
+          <button class="cancel_button" @click="close">خروج</button>
         </div>
       </div>
     </div>
@@ -18,36 +15,16 @@
 </template>
 
 <script>
-import axios from "axios";
-
 export default {
   name: "Modal",
   props: ["data"],
-  emits: ["close","reservedClick"],
+  emits: ["close"],
   data() {
     return {}
   },
   methods: {
     close: function () {
       this.$emit('close');
-    },
-    reserve: function () {
-      const body = {
-        'price' : this.data.price,
-        'date': this.data.date,
-      }
-      try {
-        axios.post(axios.options.root + "/reserve", body,{
-          headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`,
-          }
-        }).then(x => {
-          console.log(x.data)
-          this.$emit('reservedClick',x.data.success,x.data.message);
-        });
-      } catch (error) {
-        console.log(error);
-      }
     }
   }
 };

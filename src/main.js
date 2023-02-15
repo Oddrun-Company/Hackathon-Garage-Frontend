@@ -8,5 +8,5 @@ import "bootstrap";
 
 createApp(App).use(router).mount("#app");
 // Vue.prototype.$http = axios;
-axios.options.root = 'http://example.com/api';
+axios.options.root = 'http://192.168.202.95/api';
 // Vue.prototype.$http.options.root = 'http://example.com/api';

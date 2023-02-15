@@ -1,13 +1,13 @@
 <template>
   <div class="header__container">
     <div class="info">
-      <span class="name">{{ name }}</span>
+      <span class="name">{{ user.name }}</span>
       <div class="debt">
-        <span style="padding-left: 5px">بدهی</span><div class="debt-value">{{ debt }}</div>
+        <span style="padding-left: 5px">بدهی</span><div class="debt-value">{{ user.debt }}</div>
       </div>
     </div>
     <div class="buttons">
-      <RulesButton/>
+      <RulesButton @click="termClick()"/>
       <LogoutButton @click="logoutClick()"/>
     </div>
   </div>
@@ -20,21 +20,15 @@ import LogoutButton from "@/components/LogoutButton.vue";
 export default {
   name: "Header",
   components: {LogoutButton, RulesButton},
-  emits : ['onLogoutClick'],
-  props: {
-    name: {
-      type: String,
-      default: "اکبر بی قاعده",
-    },
-    debt: {
-      type: Number,
-      default: -133000
-    }
-  },
+  emits : ['onLogoutClick','onTermClick'],
+  props: ['user'],
   methods: {
     logoutClick: function() {
       this.$emit('onLogoutClick');
     },
+    termClick: function(){
+      this.$emit('onTermClick');
+    }
   },
 
 };
