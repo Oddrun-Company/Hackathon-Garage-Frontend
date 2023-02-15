@@ -19,6 +19,26 @@
   --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
   --vt-c-text-dark-1: var(--vt-c-white);
   --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
+
+  /*Parking main colors*/
+  --parking-main-blue: #205DB9;
+
+  --parking-dark-gray: #44464F;
+  --parking-main-gray: #747474;
+  --parking-light-gray: #BEBEBE;
+  --parking-background-gray: #F4F4F4;
+
+  --parking-dark-red: #962B2B;
+  --parking-main-red: #D05959;
+  --parking-background-red: #F1A29C;
+  --parking-border-red: #B75252;
+
+  --parking-background-yellow: #FCE07F;
+  --parking-border-yellow: #FFCC4A;
+
+  --parking-background-green: #70C861;
+  --parking-border-green: #A8F19C;
+  --parking-light-green: rgba(168, 241, 156, 0.5);
 }
 
 /* semantic color variables for this project */
@@ -60,15 +80,16 @@
 }
 
 body {
-  min-height: 100vh;
-  color: var(--color-text);
-  background: var(--color-background);
-  transition: color 0.5s, background-color 0.5s;
-  line-height: 1.6;
-  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-    Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  font-size: 15px;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  text-align: right;
 }
+
+.main_title {
+  color: var(--parking-main-blue);
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: center;
+}
+
+
