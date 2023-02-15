@@ -6,7 +6,7 @@
           {{ day }}
         </div>
         <div style="color: #747474">
-          {{ dateString }}
+          {{ miladi_be_shamsi(date) }}
         </div>
       </div>
       <div>
@@ -35,6 +35,7 @@
 
 <script>
 
+
 export default {
   name: "ReserveBox",
   props: ['day', 'date', 'price', 'status'],
@@ -42,6 +43,12 @@ export default {
     reserveClick: function (price, day, dateString, date) {
       this.$emit("onReserveClick", {'price': price, 'day': day, 'dateString': dateString, 'date': date});
     },
+    miladi_be_shamsi: function (date) {
+      console.log(date)
+      console.log(date.split("-"))
+
+      farvardin.gregorianToSolar(2020 , 4 , 13 , "string");
+    }
   },
   emits: ['onReserveClick'],
   data() {

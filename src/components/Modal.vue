@@ -43,7 +43,7 @@ export default {
           }
         }).then(x => {
           console.log(x.data)
-          this.$emit('reservedClick',x.data.success,x.data.message);
+          this.$emit('reservedClick',x.data.message);
         });
       } catch (error) {
         console.log(error);

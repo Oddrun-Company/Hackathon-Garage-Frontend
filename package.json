@@ -14,6 +14,7 @@
     "bootstrap": "^5.2.3",
     "toastify-js": "^1.12.0",
     "vue": "^3.2.47",
+    "vue-jalali-moment": "^1.0.0",
     "vue-router": "^4.1.6"
   },
   "devDependencies": {
