@@ -8,7 +8,7 @@
     </div>
     <div class="buttons">
       <RulesButton/>
-      <LogoutButton/>
+      <LogoutButton @click="logoutClick()"/>
     </div>
   </div>
 </template>
@@ -20,6 +20,7 @@ import LogoutButton from "@/components/LogoutButton.vue";
 export default {
   name: "Header",
   components: {LogoutButton, RulesButton},
+  emits : ['onLogoutClick'],
   props: {
     name: {
       type: String,
@@ -30,7 +31,11 @@ export default {
       default: -133000
     }
   },
-  methods: {},
+  methods: {
+    logoutClick: function() {
+      this.$emit('onLogoutClick');
+    },
+  },
 
 };
 

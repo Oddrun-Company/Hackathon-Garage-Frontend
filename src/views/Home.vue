@@ -1,11 +1,19 @@
 <template>
-  <Header></Header>
+  <Header @onLogoutClick="onLogoutClick"></Header>
   <template v-if="reserveModalOpen">
     <Modal
         :data="reserveModalData"
         @close="modalClose"
     ></Modal>
   </template>
+
+  <template v-if="logoutModalOpen">
+    <LogoutModal
+        :data="logoutModalData"
+        @close="modalClose"
+    ></LogoutModal>
+  </template>
+
 
   <SelectWeek
       activeTab="currentWeek"
@@ -49,10 +57,12 @@ import Header from "@/components/Header.vue";
 import SelectWeek from "@/components/SelectWeek.vue";
 import ReserveBox from "@/components/ReserveBox.vue";
 import Modal from "@/components/Modal.vue";
+import LogoutModal from "@/components/LogoutModal.vue";
 // @ is an alias to /src
 export default {
   name: "Home",
   components: {
+    LogoutModal,
     Modal,
     ReserveBox,
     SelectWeek,
@@ -63,6 +73,8 @@ export default {
       aTab: 'currentWeek',
       reserveModalOpen: false,
       reserveModalData: {},
+      logoutModalOpen: false,
+      logoutModalData: {},
     };
   },
   computed: {},
@@ -76,8 +88,13 @@ export default {
       data.title = 'خداوکیلی مطمینی؟';
       this.reserveModalData = data;
     },
+    onLogoutClick() {
+      this.logoutModalOpen = true;
+      this.logoutModalData = {};
+    },
     modalClose() {
       this.reserveModalOpen = false;
+      this.logoutModalOpen = false;
     }
   },
 };
