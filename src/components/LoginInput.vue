@@ -1,7 +1,6 @@
 <template>
   <div class="login-input__container">
-<!--    <label :for="label">{{ label }}</label>-->
-    <input :id="label" :type="type" :value="modelValue" @input="updateInput" />
+    <input class="login-input" :id="label" :type="type" :value="modelValue" :placeholder="placeholder" @input="updateInput" maxlength=11/>
   </div>
 </template>
 
@@ -14,12 +13,15 @@ export default {
       default: "",
     },
     modelValue: {
-      type: [String, Number],
+      type: [Number],
       default: "",
     },
+    placeholder: {
+      type: [String],
+      default: "شماره بده",
+    },
     type: {
-      type: String,
-      default: "text",
+      type: Number
     },
   },
   methods: {
@@ -32,8 +34,20 @@ export default {
 </script>
 
 <style scoped lang="css">
-.login-input__container {
-  display: flex;
-  flex-direction: column;
+.login-input {
+  font-family: "Estedad", serif !important;
+  font-weight: 400;
+  font-size: 16px;
+  color: #44464F;
+  text-align: right;
+  width: 280px;
+  height: 56px;
+  border: 1px solid #757780;
+  border-radius: 4px;
+  padding: 30px;
+}
+
+.login-input:focus {
+  border-color: var(--parking-main-blue);
 }
 </style>
