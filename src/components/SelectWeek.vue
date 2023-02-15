@@ -1,19 +1,36 @@
 <template>
   <div class="topnav" id="myTopnav">
-    <div href="">
+    <div
+        :class="{'active': aTab==='currentWeek'}"
+        @click="changeCurrentTab('currentWeek')"
+    >
       <span>هفته‌ی جاری</span>
-
     </div>
-    <div href="">
+    <div
+        :class="{'active': aTab==='nextWeek'}"
+        @click="changeCurrentTab('nextWeek')"
+    >
       <span>هفته‌ی آتی</span>
     </div>
-
   </div>
 </template>
 
 <script>
 export default {
-  name: "SelectWeek"
+  name: "SelectWeek",
+  props: ["activeTab"],
+  data() {
+    return {
+      aTab: this.activeTab
+    }
+  },
+  emits: ['onTabChanged'],
+  methods: {
+    changeCurrentTab: function (tab) {
+      this.$emit("onTabChanged", tab);
+      this.aTab = tab;
+    },
+  }
 }
 </script>
 
@@ -38,8 +55,9 @@ export default {
   font-size: 17px;
 }
 
-.topnav div span:hover {
+.active span {
   border-bottom: 3px solid #205DB9;
+  color: #205DB9;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -47,16 +65,11 @@ export default {
 }
 
 /* Change the color of links on hover */
-.topnav div:hover {
+.active {
   background-color: #FEFBFF;
   color: #205DB9;
 }
 
-/* Add an active class to highlight the current page */
-.topnav div.active {
-  background-color: blue;
-  color: #FEFBFF;
-}
 
 /* Hide the link that should open and close the topnav on small screens */
 .topnav .icon {

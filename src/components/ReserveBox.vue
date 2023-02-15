@@ -64,7 +64,6 @@ export default {
 
 <style scoped lang="css">
 .box {
-  width: 90%;
   direction: rtl;
   box-shadow: 0 0 3px #ccc;
   border-radius: 10px;
