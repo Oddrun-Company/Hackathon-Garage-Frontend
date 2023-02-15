@@ -19,7 +19,7 @@
           </div>
         </template>
         <template v-if="status==='free'">
-          <button class="reserve_button">
+          <button @click="reserveClick(price, day, dateString, date)" class="ok_button">
             رزرو کن
           </button>
         </template>
@@ -34,9 +34,16 @@
 </template>
 
 <script>
+
 export default {
   name: "ReserveBox",
   props: ['day', 'date', 'price', 'status'],
+  methods: {
+    reserveClick: function (price, day, dateString, date) {
+      this.$emit("onReserveClick", {'price': price, 'day': day, 'dateString': dateString, 'date': date});
+    },
+  },
+  emits: ['onReserveClick'],
   data() {
     const tokens = this.date.split('/');
     const months = [

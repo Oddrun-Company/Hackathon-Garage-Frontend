@@ -1,5 +1,12 @@
 <template>
   <Header></Header>
+  <template v-if="reserveModalOpen">
+    <Modal
+        :data="reserveModalData"
+        @close="modalClose"
+    ></Modal>
+  </template>
+
   <SelectWeek
       activeTab="currentWeek"
       @onTabChanged="onTabChanged"
@@ -11,6 +18,7 @@
           date="1401/11/26"
           price="50"
           status="reserved"
+          @onReserveClick="onReserveClick"
       >
       </ReserveBox>
       <ReserveBox
@@ -18,6 +26,7 @@
           date="1401/11/26"
           price="50"
           status="free"
+          @onReserveClick="onReserveClick"
       >
       </ReserveBox>
       <ReserveBox
@@ -25,6 +34,7 @@
           date="1401/11/26"
           price="50"
           status="filled"
+          @onReserveClick="onReserveClick"
       >
       </ReserveBox>
     </template>
@@ -38,23 +48,36 @@
 import Header from "@/components/Header.vue";
 import SelectWeek from "@/components/SelectWeek.vue";
 import ReserveBox from "@/components/ReserveBox.vue";
+import Modal from "@/components/Modal.vue";
 // @ is an alias to /src
 export default {
   name: "Home",
   components: {
+    Modal,
     ReserveBox,
     SelectWeek,
     Header
   },
   data() {
     return {
-      aTab: '',
+      aTab: 'currentWeek',
+      reserveModalOpen: false,
+      reserveModalData: {},
     };
   },
   computed: {},
   methods: {
     onTabChanged(tab) {
       this.aTab = tab
+    },
+    onReserveClick(data) {
+      // price, day, dateString, date
+      this.reserveModalOpen = true;
+      data.title = 'خداوکیلی مطمینی؟';
+      this.reserveModalData = data;
+    },
+    modalClose() {
+      this.reserveModalOpen = false;
     }
   },
 };
