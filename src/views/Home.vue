@@ -138,20 +138,20 @@ export default {
       this.reserveModalOpen = false;
       Toastify({
         text: msg,
-        duration: 50000000,
+        duration: 4000,
         destination: "https://github.com/apvarun/toastify-js",
         newWindow: false,
-        close: true,
+        close: false,
         gravity: "bottom", // `top` or `bottom`
         position: "center", // `left`, `center` or `right`
         stopOnFocus: false, // Prevents dismissing of toast on hover
         style: {
           "min-width": "250px",
           "margin-left": "-125px",
-          "background-color": "#333",
-          "color": "#fff",
+          "background-color": "rgb(58 58 58 / 70%)",
+          "color": "white",
           "text-align":" center",
-          "border-radius": "2px",
+          "border-radius": "50px",
           "padding": "16px",
           "position":" fixed",
           "z-index":" 1",

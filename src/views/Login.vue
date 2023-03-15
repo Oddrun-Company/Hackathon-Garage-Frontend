@@ -6,40 +6,41 @@
     </div>
 
 
-      <template v-if="sendSmsFlag">
-        <div class="login_container-input">
-          <LoginInput
-              type="tel"
-              label="phone_number"
-              v-model="code"
-              placeholder="کد تاییدت را وارد کن مهندس"
-          >
-          </LoginInput>
-        <button @click="verify" :class="{ 'login-button': checkDisabled , 'login-button-disable': !checkDisabled}" :disabled="!checkDisabled">
+    <template v-if="sendSmsFlag">
+      <div class="login_container-input">
+        <LoginInput
+            type="tel"
+            label="phone_number"
+            v-model="code"
+            placeholder="کد تاییدت را وارد کن مهندس"
+            @keyup.enter="verify()">
+        </LoginInput>
+        <button @click="verify" :class="{ 'login-button': checkDisabled , 'login-button-disable': !checkDisabled}"
+                :disabled="!checkDisabled">
           <span class="login-button-text">ورود</span>
         </button>
 
-        </div>
-      </template>
+      </div>
+    </template>
 
-      <template v-if="!sendSmsFlag">
-        <div class="login_container-input">
-          <LoginInput
-              type="tel"
-              label="phone_number"
-              v-model="phone"
-
-          >
-          </LoginInput>
-        <button @click="login" :class="{ 'login-button': checkDisabled , 'login-button-disable': !checkDisabled}" :disabled="!checkDisabled">
+    <template v-if="!sendSmsFlag">
+      <div class="login_container-input">
+        <LoginInput
+            type="tel"
+            label="phone_number"
+            pattern="[0-9]{4}-[0-9]{3}-[0-9]{4}"
+            v-model="phone"
+            @keyup.enter="login()"
+        >
+        </LoginInput>
+        <button @click="login" :class="{ 'login-button': checkDisabled , 'login-button-disable': !checkDisabled}"
+                :disabled="!checkDisabled">
           <span class="login-button-text">دریافت کد</span>
         </button>
-        </div>
-      </template>
-
-
+      </div>
+    </template>
+    <img class="image" src="../images/login.png" alt="Login image"/>
   </div>
-  <img class="image" src="../images/login.png" alt="Login image"/>
 </template>
 
 <script>
@@ -68,31 +69,31 @@ export default {
   methods: {
     async verify() {
       const body = {
-        'code' : this.token,
+        'code': this.token,
         'phone': this.phone,
       }
-      try{
-        const response = await  axios.post(
+      try {
+        const response = await axios.post(
             axios.options.root + "/auth/verify",
             body
         )
         localStorage.setItem('token', response.data.data.token)
         console.log(response.data.data.token)
         location.href = '/#/home'
-      }catch (e) {
+      } catch (e) {
         console.log(error);
       }
 
     },
     async login() {
       const body = {
-        'phone' : this.phone
+        'phone': this.phone
       };
 
       try {
         const response = await axios.post(
             axios.options.root + "/auth/request"
-        , body);
+            , body);
         this.response = response.data;
         console.log(this.response);
         this.sendSmsFlag = true
@@ -105,30 +106,29 @@ export default {
 </script>
 <style scoped lang="css">
 .login_container {
-  height: 600px;
+  height: 100vh;
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   flex-direction: column;
-  margin-top: 56px;
+  padding-top: 24px;
+  box-shadow: 0px 0px 9px 3px #78787833;
 }
 
 .image {
   width: 100%;
-  position: fixed;
-  bottom: 0;
-  left: 0;
 }
 
 .login_container-input {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 300px;
+  margin-top: 32px;
+  margin-bottom: 32px;
 }
 
-.login-button-disable{
+.login-button-disable {
   background-color: rgba(27, 27, 31, 0.12);
   border-radius: 100px;
   width: 107px;

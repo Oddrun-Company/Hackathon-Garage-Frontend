@@ -1,6 +1,7 @@
 <template>
   <div class="login-input__container">
-    <input class="login-input" :id="label" :type="type" :value="modelValue" :placeholder="placeholder" @input="updateInput" maxlength=11/>
+    <input class="login-input" :id="label" :type="type" :value="modelValue" :placeholder="placeholder" :pattern="pattern"
+           @input="updateInput" maxlength=11/>
   </div>
 </template>
 
@@ -23,6 +24,9 @@ export default {
     type: {
       type: Number
     },
+    pattern: {
+      type: String
+    }
   },
   methods: {
     updateInput(event) {

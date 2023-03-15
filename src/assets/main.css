@@ -5,7 +5,17 @@
     src: local("Estedad"), url(../fonts/Estedad.ttf) format("truetype");
 }
 
+html {
+    background: #efefef;
+}
+
 body {
     font-family: "Estedad",serif !important;
     direction: rtl;
+    max-width: 500px;
+    margin: auto !important;
+}
+
+#app {
+    min-height: 100vh;
 }
