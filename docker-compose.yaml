@@ -1,9 +1,10 @@
 version: "3.6"
 services:
-  application:
-    working_dir: /var/www/html/
-    entrypoint: /bin/bash
+  web:
+    image: registry.footballiapp.com/frontend/garage
+    build:
+      context: ./
     ports:
-      - "8000:5174"
+      - "${APP_PORT:-8000}:80"
     volumes:
       - ./:/var/www/html
